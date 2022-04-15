@@ -1,0 +1,21 @@
+@import 'helpers/all';
+@import 'generated/all';
+@import 'base/all';
+
+// Libs
+@import 'swiper/swiper-bundle';
+
+// Customization libs
+@import 'custom';
+
+// Import site components
+@import 'components/buttons';
+
+// Import main styles
+@import 'main';
+
+// Import site layouts
+@import 'layout/header';
+
+// Import pages
+@import 'pages/page';
