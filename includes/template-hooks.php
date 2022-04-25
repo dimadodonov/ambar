@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH')) {
  */
 
 add_action( 'hook_header', 'hook_header',                       10 );
-add_action( 'hook_header', 'hook_nav',                          20 );
+// add_action( 'hook_header', 'hook_nav',                          20 );
 
 /**
  * Home Page hooks
@@ -22,16 +22,16 @@ add_action( 'hook_header', 'hook_nav',                          20 );
  */
 
 add_action( 'hook_home', 'hook_page_before',                    10 );
+// add_action( 'hook_home', 'hook_section_intro',                  20 );
+// add_action( 'hook_home', 'hook_section_event',                  20 );
+add_action( 'hook_home', 'hook_section_catalog',                  20 );
 add_action( 'hook_home', 'hook_page_after',                     80 );
 
 
 /**
  * Footer hooks
  *
- * @see  hook_section_contacts
- * @see  hook_order_popup
  * @see  hook_footer
  */
 
-add_action( 'hook_footer', 'hook_section_contacts',             10 );
 add_action( 'hook_footer', 'hook_footer',                       30 );

@@ -12,9 +12,9 @@ import documentReady from './helpers/documentReady';
 documentReady(() => {
     main();
     lazyImages();
+    header();
     // popup();
-    // header();
-    // slider();
+    slider();
     // yandex();
     svg4everybody();
 });

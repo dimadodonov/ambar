@@ -1,8 +1,9 @@
-//FONTS
-$f: GothamPro-Regular, sans-serif;
-$f-light: GothamPro-light, sans-serif;
-$f-medium: GothamPro-Medium, sans-serif;
-$f-bold: GothamPro-Bold, sans-serif;
+//FONT
+$f: roboto-400, sans-serif;
+$f-light: roboto-300, sans-serif;
+$f-medium: roboto-500, sans-serif;
+$f-bold: roboto-600, sans-serif;
+$f-black: roboto-900, sans-serif;
 
 $base-font-size: 16px;
 $base-font-family: $f;
@@ -118,7 +119,7 @@ $text-colors: (
     danger: red,
 );
 
-$bg-color: #000;
+$bg-color: #fff;
 
 $bg-colors: (
     light: $color-bg--light,

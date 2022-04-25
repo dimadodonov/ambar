@@ -11,6 +11,29 @@ if ( ! defined( 'ABSPATH')) {
  * provide it for us.
  */
 add_theme_support( 'title-tag' );
+add_theme_support( 'woocommerce' );
+
+//        add_theme_support( 'wc-product-gallery-zoom' );
+//        add_theme_support( 'wc-product-gallery-lightbox' );
+//        add_theme_support( 'wc-product-gallery-slider' );
+
+// disable flexslider js
+function flex_dequeue_script() {
+    wp_dequeue_script( 'flexslider' );
+}
+add_action( 'wp_print_scripts', 'flex_dequeue_script', 100 );
+
+// disable zoom jquery js file
+function zoom_dequeue_script() {
+    wp_dequeue_script( 'zoom' );
+}
+add_action( 'wp_print_scripts', 'zoom_dequeue_script', 100 );
+
+// disable photoswipe js file
+function photoswipe_dequeue_script() {
+    wp_dequeue_script( 'photoswipe-ui-default' );
+}
+add_action( 'wp_print_scripts', 'photoswipe_dequeue_script', 100 );
 
 // Включаем миниатюры в записях
 add_theme_support('post-thumbnails');

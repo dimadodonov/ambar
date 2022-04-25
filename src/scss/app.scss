@@ -15,7 +15,10 @@
 @import 'main';
 
 // Import site layouts
+@import 'layout/cart';
+@import 'layout/catalog';
 @import 'layout/header';
+@import 'layout/section';
 
 // Import pages
 @import 'pages/page';

@@ -1,0 +1,121 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 30px 20px;
+    transition: $trs;
+    background-color: #fff;
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &.down {
+        padding: 10px 20px;
+    }
+
+    &-phone {
+        width: 32px;
+        height: 32px;
+
+        svg {
+            width: inherit;
+            height: inherit;
+
+            fill: #000;
+        }
+    }
+
+    &-logo {
+        width: 140px;
+        height: 40px;
+        background-image: url('../../assets/files/icons/svg/logo.svg');
+        background-position: center;
+        background-size: 140px 40px;
+    }
+
+    &-nav {
+        position: relative;
+        z-index: 90;
+        display: none;
+        width: 24px;
+        height: 24px;
+
+        @include md-block() {
+            display: initial;
+        }
+
+        .hamburger,
+        .hamburger::after,
+        .hamburger::before {
+            width: 24px;
+            height: 2px;
+            border-radius: 2px;
+        }
+
+        .hamburger {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0ms 300ms;
+            background-color: #000;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 8px;
+                left: 0;
+                transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                    transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+                background: #000;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 8px;
+                left: 0;
+                transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                    transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+                background: #000;
+            }
+
+            &.animate {
+                background: rgba(0, 0, 0, 0);
+
+                &::after {
+                    top: 0;
+                    transform: rotate(45deg);
+                    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                        transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+                }
+
+                &::before {
+                    bottom: 0;
+                    transform: rotate(-45deg);
+                    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1),
+                        transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+                }
+            }
+
+            &.hamburger_white {
+                background-color: #fff;
+
+                &::before {
+                    background: #fff;
+                }
+
+                &::after {
+                    background: #fff;
+                }
+
+                &.animate {
+                    background: rgba(255, 255, 255, 0);
+                }
+            }
+        }
+    }
+} // .header

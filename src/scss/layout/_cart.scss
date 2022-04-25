@@ -1,0 +1,38 @@
+.cart {
+    &-mini {
+        position: fixed;
+        right: 10px;
+        bottom: 20px;
+        left: 10px;
+
+        display: none;
+
+        width: calc(100% - 20px);
+        margin: 0 auto;
+
+        &__totalprice {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        &__link,
+        &__price {
+            display: flex;
+            margin: 0 auto;
+            padding: 5px 25px 8px;
+            border-radius: 8px;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            letter-spacing: 0.6px;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        &.action {
+            display: block;
+        }
+    }
+}
