@@ -78,7 +78,7 @@
     "lint-staged": "^12.4.0",
     "postcss-loader": "^6.2.1",
     "prettier": "^2.6.2",
-    "sass": "^1.50.1",
+    "sass": "^1.51.0",
     "stylelint": "^14.7.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard-scss": "^3.0.0",
@@ -95,6 +95,6 @@
     "smart-grid": "^2.1.2",
     "svg4everybody": "^2.1.9",
     "swiper": "^8.1.4",
-    "vanilla-lazyload": "^17.7.0"
+    "vanilla-lazyload": "^17.8.1"
   }
 }
