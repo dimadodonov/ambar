@@ -26,9 +26,16 @@
         &__list {
             display: flex;
             align-items: center;
-            padding: 0 20px;
             overflow-y: auto;
             scrollbar-width: none;
+
+            .swiper {
+                padding: 0 20px;
+
+                &-slide {
+                    flex: 1;
+                }
+            }
         }
 
         &__item {
@@ -41,6 +48,7 @@
         }
 
         &__icon {
+            flex: 0 0 40px;
             width: 40px;
             height: 40px;
             border-radius: 20px;
@@ -53,7 +61,8 @@
         }
 
         &__title {
-            margin-left: 10px;
+            width: calc(100% - 40px);
+            padding-left: 10px;
             color: #000;
             font-size: 14px;
             white-space: nowrap;
@@ -64,10 +73,6 @@
         position: relative;
         padding: 30px 20px 0;
 
-        &:last-child {
-            margin-bottom: 80px;
-        }
-
         &__title {
             margin-bottom: 30px;
             color: rgba(0, 0, 0, 0.2);
@@ -76,6 +81,11 @@
             line-height: 42px;
             text-align: center;
             text-transform: uppercase;
+
+            @include xs-block() {
+                font-size: 24px;
+                line-height: normal;
+            }
         }
 
         &__wrap {
@@ -99,7 +109,8 @@
             flex: 0 0 90px;
             width: 90px;
             height: 90px;
-            border-radius: 10px;
+            overflow: hidden;
+            border-radius: 5px;
             background-color: #ccc;
 
             img {

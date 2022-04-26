@@ -117,31 +117,40 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
                 <div class="catalog-nav">
                     <div class="catalog-nav__wrap">
                         <div class="catalog-nav__list">
-                        <?php foreach ($terms as $term){
-
-                            // get the thumbnail id using the queried category term_id
-                            $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
-
-                            // get the image URL
-                            $image = wp_get_attachment_url( $thumbnail_id ); 
-
-                            ?>
-                                <a class="catalog-nav__item scroll-item" href="<?php echo '#cat_' . $term->slug; ?>">
-                                    <?php 
-                                        if($thumbnail_id) : 
-                                            echo '<div class="catalog-nav__icon"><img src="' . $image . '" alt="" width="100" height="100" /></div>';
-                                            else :
-                                                $placeholder = wc_placeholder_img_src( 'thumbnail' );
-                                            echo '<div class="catalog-nav__icon"><img src="' . $placeholder . '" alt="" width="100" height="100" /></div>';
-
-                                        endif;
-                                    ?>
-                                    
-                                    <div class="catalog-nav__title"><?=$term->name;?></div>
-                                </a>
-                            <?php
                             
-                        } ?>
+                        <div class="swiper sliderNav">
+                            <div class="swiper-wrapper">
+
+                            <?php foreach ($terms as $term){
+
+                                // get the thumbnail id using the queried category term_id
+                                $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
+
+                                // get the image URL
+                                $image = wp_get_attachment_url( $thumbnail_id ); 
+
+                                ?>
+                                    <div class="swiper-slide">
+                                        <a class="catalog-nav__item scroll-item" href="<?php echo '#cat_' . $term->slug; ?>">
+                                            <?php 
+                                                if($thumbnail_id) : 
+                                                    echo '<div class="catalog-nav__icon"><img src="' . $image . '" alt="" width="100" height="100" /></div>';
+                                                    else :
+                                                        $placeholder = wc_placeholder_img_src( 'thumbnail' );
+                                                    echo '<div class="catalog-nav__icon"><img src="' . $placeholder . '" alt="" width="100" height="100" /></div>';
+
+                                                endif;
+                                            ?>
+                                            
+                                            <div class="catalog-nav__title"><?=$term->name;?></div>
+                                        </a>
+                                    </div>
+                                <?php
+                                
+                            } ?>
+
+                            </div>
+                        </div>
                         
                         </div>
                     </div>

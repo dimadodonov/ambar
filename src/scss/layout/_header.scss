@@ -40,13 +40,8 @@
     &-nav {
         position: relative;
         z-index: 90;
-        display: none;
         width: 24px;
         height: 24px;
-
-        @include md-block() {
-            display: initial;
-        }
 
         .hamburger,
         .hamburger::after,

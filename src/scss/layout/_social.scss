@@ -18,11 +18,6 @@
         border-radius: 50%;
         background: #ebebeb;
 
-        @include xs-block() {
-            width: 36px;
-            height: 36px;
-        }
-
         &__other {
             margin-left: 50px;
             padding-left: 50px;
@@ -38,14 +33,9 @@
         }
 
         svg {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             fill: #9e9e9e;
-
-            @include xs-block() {
-                width: 16px;
-                height: 16px;
-            }
         }
     }
 } // .social
