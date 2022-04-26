@@ -15,6 +15,9 @@ export default () => {
         slidesPerView: 'auto',
         spaceBetween: 10,
         freeMode: true,
+        slideToClickedSlide: true,
+        preventClicksPropagation: false,
+        preventClicks: false,
     });
 
     // thumbs.addEventListener('click', function () {

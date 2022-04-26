@@ -66,12 +66,6 @@ export default () => {
         menuEvent(true);
     });
 
-    // document
-    //     .querySelector('.home .header-logo')
-    //     .addEventListener('click', () => {
-    //         menuEvent(false);
-    //     });
-
     document.querySelectorAll('.menu-item a').forEach((link) => {
         link.addEventListener('click', function () {
             menuEvent(false);
