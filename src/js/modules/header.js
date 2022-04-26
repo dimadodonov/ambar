@@ -20,9 +20,12 @@ export default () => {
     });
 
     const header = document.querySelector('.header');
-    let catNav = document
-        .querySelector('.catalog-nav')
-        .getBoundingClientRect().top;
+    const catNavClass = document.querySelector('.catalog-nav');
+
+    let catNav = 0;
+    if (catNavClass) {
+        catNav = catNavClass.getBoundingClientRect().top;
+    }
     const catNavWrap = document.querySelector('.catalog-nav__wrap');
 
     let scrollPos = 0;
@@ -36,16 +39,42 @@ export default () => {
             header.classList.remove('down');
         }
 
-        if (sT > catNav - headerHeight) {
-            catNavWrap.classList.add('stiky');
-        } else {
-            catNavWrap.classList.remove('stiky');
+        if (catNavClass) {
+            if (sT > catNav - headerHeight) {
+                catNavWrap.classList.add('stiky');
+            } else {
+                catNavWrap.classList.remove('stiky');
+            }
         }
 
         scrollPos = sT;
     });
 
-    document.querySelector('.header-nav').addEventListener('click', (e) => {
-        document.querySelector('.hamburger').classList.toggle('animate');
+    function menuEvent(event) {
+        if (event === true) {
+            document.querySelector('.hamburger').classList.toggle('animate');
+            document.querySelector('.nav').classList.toggle('action');
+            document.querySelector('body').classList.toggle('is-fixed');
+        } else {
+            document.querySelector('.hamburger').classList.remove('animate');
+            document.querySelector('.nav').classList.remove('action');
+            document.querySelector('body').classList.remove('is-fixed');
+        }
+    }
+
+    document.querySelector('.header-nav').addEventListener('click', () => {
+        menuEvent(true);
+    });
+
+    // document
+    //     .querySelector('.home .header-logo')
+    //     .addEventListener('click', () => {
+    //         menuEvent(false);
+    //     });
+
+    document.querySelectorAll('.menu-item a').forEach((link) => {
+        link.addEventListener('click', function () {
+            menuEvent(false);
+        });
     });
 };

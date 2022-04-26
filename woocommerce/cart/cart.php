@@ -19,6 +19,10 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_cart' ); ?>
 
+<div class="cart__notify">
+	<span>Позовите официанта, чтобы сделать заказ</span>
+</div>
+
 <div class="cart__wrap">
 
 <form class="woocommerce-cart-form cart__form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
@@ -36,18 +40,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					<div class="cart-item woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-
-						<div class="cart-thumbnail product-thumbnail">
-						<?php
-						$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-
-						if ( ! $product_permalink ) {
-							echo $thumbnail; // PHPCS: XSS ok.
-						} else {
-							printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
-						}
-						?>
-						</div>
 
 						<div class="cart-name product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 						<?php
@@ -131,35 +123,15 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</div>
 			<?php } ?>
 
-			<button type="submit" class="update_cart button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-
-			<?php do_action( 'woocommerce_cart_actions' ); ?>
-
-			<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
+			<div class="cart-total">
+				Итого: <ins>7 580</ins> ₽
+			</div>
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
-
-<div class="woocommerce-cart-right cart__table">
-
-	<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
-
-	<div class="cart-collaterals">
-		<?php
-			/**
-			 * Cart collaterals hook.
-			 *
-			 * @hooked woocommerce_cross_sell_display
-			 * @hooked woocommerce_cart_totals - 10
-			 */
-			do_action( 'woocommerce_cart_collaterals' );
-		?>
-	</div>
-
-</div>
 
 </div>
 

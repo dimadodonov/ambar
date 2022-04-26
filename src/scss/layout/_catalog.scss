@@ -45,12 +45,18 @@
             height: 40px;
             border-radius: 20px;
             background-color: #ccc;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
         }
 
         &__title {
             margin-left: 10px;
             color: #000;
             font-size: 14px;
+            white-space: nowrap;
         }
     }
 
@@ -102,6 +108,13 @@
                 object-fit: cover;
                 object-position: center;
             }
+        }
+
+        &__name {
+            padding-left: 10px;
+            color: rgba(0, 0, 0, 0.8);
+            font-family: $f-medium;
+            font-size: 16px;
         }
 
         &__desc {

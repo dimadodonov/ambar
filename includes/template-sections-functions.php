@@ -29,9 +29,22 @@ if ( ! function_exists( 'hook_nav' ) ) {
     /**
      * Display Hooks Nav
      */
-    function hook_nav() {
-        echo header_menu_primary();
-    }
+    function hook_nav() { ?>
+        <div class="nav">
+            <div class="nav__title">Меню</div>
+            <?php echo header_menu_primary(); ?>
+            <div class="nav__phone">
+                <a href="tel:+79272257474">+7(927)225-74-74</a>
+            </div>
+            <div class="nav-social social">
+                <div class="social__wrap">
+                    <a class="social-item" href="https://vk.com/barambar64" target="_blank">
+                        <svg><use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/files/sprite.svg#icon--social-vk"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?php }
 }
 
 if ( ! function_exists( 'hook_mob_nav' ) ) {
@@ -89,14 +102,14 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
      */
     function hook_section_catalog() { ?>
     <section class="section section-catalog">
-        <div class="section-catalog__title">
+        <div id="menu" class="section-catalog__title">
             Меню
         </div>
                 
         <?php 
             $args = array(
                 'order' => 'ASC',
-                'hide_empty' => true,
+                'hide_empty' => false,
             );
             $terms = get_terms('product_cat', $args);
             if($terms){ ?>
@@ -113,10 +126,14 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
                             $image = wp_get_attachment_url( $thumbnail_id ); 
 
                             ?>
-                                <a class="catalog-nav__item" href="<?php echo '#cat_' . $term->slug; ?>">
+                                <a class="catalog-nav__item scroll-item" href="<?php echo '#cat_' . $term->slug; ?>">
                                     <?php 
                                         if($thumbnail_id) : 
                                             echo '<div class="catalog-nav__icon"><img src="' . $image . '" alt="" width="100" height="100" /></div>';
+                                            else :
+                                                $placeholder = wc_placeholder_img_src( 'thumbnail' );
+                                            echo '<div class="catalog-nav__icon"><img src="' . $placeholder . '" alt="" width="100" height="100" /></div>';
+
                                         endif;
                                     ?>
                                     
@@ -131,7 +148,7 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
                 </div>
 
                 <?php foreach ($terms as $cat_term) :
-                    catalogloop($cat_term->slug);
+                    catalogloop($cat_term->slug, $cat_term->name);
                 endforeach; ?>
 
             <?php } ?>
@@ -143,7 +160,7 @@ if ( ! function_exists( 'catalogloop' ) ) {
     /**
      * Display Hooks catalogloop
      */
-    function catalogloop($term) {
+    function catalogloop($term, $name) {
 
         $args = array(
             'post_type' => 'product',
@@ -158,7 +175,7 @@ if ( ! function_exists( 'catalogloop' ) ) {
         if ($news_query->have_posts()) : ?>
 
             <div id="<?php echo 'cat_' . $term; ?>" class="catalog-loop">
-                <div class="catalog-loop__title"><?php echo $term; ?></div>
+                <div class="catalog-loop__title"><?php echo $name; ?></div>
                 <div class="catalog-loop__wrap">
 
                     <?php while ($news_query->have_posts()) :
@@ -254,25 +271,31 @@ if ( ! function_exists( 'hook_mini_cart' ) ) {
      * Display Hooks Mini Cart
      */
     function hook_mini_cart() {
-        ?>
-            <div class="cart-mini cart-customlocation">
+        if(is_cart()) : ?>
+
+            <div class="cart-mini active">
                 <div class="cart-mini__totalprice">
-                    <?php 
-                        if(is_cart()) : 
-                        $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
-                        ?>
-                            <a class="cart-mini__link" href="<?php echo esc_url( $shop_page_url ); ?>">
-                                К меню
-                            </a>
-                        <?php else : ?>
-                            <a class="cart-mini__price" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
-                                Заказ / 495 ₽
-                            </a>
-                        <?php endif;
+                <?php 
+                    $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
                     ?>
+                        <a class="cart-mini__link" href="<?php echo esc_url( $shop_page_url ); ?>">
+                            К меню
+                        </a>
                 </div>
             </div>
-        <?php
+            
+        <?php else : ?>
+            <div class="cart-mini cart-customlocation">
+                <div class="cart-mini__totalprice">
+
+                    <a class="cart-mini__price" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
+                        Заказ / <?php echo wp_kses_data(WC()->cart->get_cart_contents_count()); ?> ₽
+                    </a>
+                    
+                </div>
+            </div>
+
+        <?php endif;
     }
 }
 

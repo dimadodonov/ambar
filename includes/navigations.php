@@ -7,9 +7,7 @@ if ( ! defined( 'ABSPATH')) {
 
 register_nav_menus( array(
     'primary' => 'Основное',
-    'primary' => 'Основное',
-    'aside' => 'Сайтбар',
-    'aside' => 'Сайтбар'
+    'primary' => 'Основное'
 ));
 
 
@@ -17,22 +15,10 @@ function header_menu_primary() {
     wp_nav_menu( array(
         'theme_location' => 'primary',
         'menu_id' => 'primary_menu',
-	    'container'       => 'nav',
-        'container_class' => 'nav',
-        'container_id'    => '',
-        'menu_class'      => 'nav__wrap',
-        'menu_id'         => '',
-    ));
-}
-
-function aside_menu_primary() {
-    wp_nav_menu( array(
-        'theme_location' => 'aside',
-        'menu_id' => 'aside_menu',
 	    'container'       => 'div',
-        'container_class' => 'aside-nav',
-        'container_id'    => '',
-        'menu_class'      => 'aside-nav',
-        'menu_id'         => '',
+        'container_class' => 'nav-menu__wrap',
+        'container_id'    => 'nav-menu__wrap',
+        'menu_class'      => 'nav-menu',
+        'menu_id'         => 'nav-menu',
     ));
 }

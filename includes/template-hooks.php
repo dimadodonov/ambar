@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH')) {
  */
 
 add_action( 'hook_header', 'hook_header',                       10 );
-// add_action( 'hook_header', 'hook_nav',                          20 );
+add_action( 'hook_header', 'hook_nav',                          20 );
 
 /**
  * Home Page hooks

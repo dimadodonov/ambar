@@ -11,7 +11,13 @@
 
 <article id="post-<?php the_ID(); ?>">
 
-    <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    <?php 
+	
+		if(!is_cart()) :
+			the_title( '<h1 class="entry-title">', '</h1>' );
+		endif;
+
+	?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>

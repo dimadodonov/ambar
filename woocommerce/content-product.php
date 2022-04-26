@@ -35,22 +35,34 @@ $post_id = get_the_ID();
 		<figure class="catalog-loop__photo">
 			<?php echo $product->get_image(); ?>
 		</figure>
-		<?php
-			$product_desc = $product->get_description();
-			if($product_desc) :
-		?>
-		<div class="catalog-loop__desc">
-			<?php echo $product_desc; ?>
+		<div class="catalog-loop__inner">
+			<?php
+				$product_name = $product->get_name();
+				if($product_name) :
+			?>
+				<div class="catalog-loop__name">
+					<?php echo $product_name; ?>
+				</div>
+			<?php endif; ?>
+			<?php
+				$product_desc = $product->get_description();
+				if($product_desc) :
+			?>
+			<div class="catalog-loop__desc">
+				<?php echo $product_desc; ?>
+			</div>
+			<?php endif; ?>
 		</div>
-		<?php endif; ?>
 	</div>
 	<div class="catalog-loop__prices">
 		<?php 
 			$price = $product->get_regular_price();
 			if($price) : 
 		?>
-		<div class="catalog-loop__price"><?php echo number_format($price,0,"."," ") . ' руб'; ?></div>
+		<div class="catalog-loop__price"><?php echo number_format($price,0,"."," ") . ' ₽'; ?></div>
 		<?php endif; ?>
-		<div class="catalog-loop__qty">В заказ</div>
+		<div class="catalog-loop__qty">
+			<?php woocommerce_template_loop_add_to_cart(); ?>
+		</div>
 	</div>
 </div>
