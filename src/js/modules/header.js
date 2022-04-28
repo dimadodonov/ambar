@@ -66,9 +66,9 @@ export default () => {
         menuEvent(true);
     });
 
-    document.querySelectorAll('.menu-item a').forEach((link) => {
-        link.addEventListener('click', function () {
-            menuEvent(false);
-        });
-    });
+    // document.querySelectorAll('.menu-item a').forEach((link) => {
+    //     link.addEventListener('click', function () {
+    //         menuEvent(false);
+    //     });
+    // });
 };

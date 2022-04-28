@@ -56,6 +56,28 @@ if ( ! function_exists( 'hook_mob_nav' ) ) {
     <?php }
 }
 
+if ( ! function_exists( 'hook_start_menu' ) ) {
+    /**
+     * Display hook start menu
+     */
+    function hook_start_menu() { ?>
+        <div class="nav action">
+            <div class="nav__title">Меню</div>
+            <?php echo header_menu_primary(); ?>
+            <div class="nav__phone">
+                <a href="tel:+79272257474">+7(927)225-74-74</a>
+            </div>
+            <div class="nav-social social">
+                <div class="social__wrap">
+                    <a class="social-item" href="https://vk.com/barambar64" target="_blank">
+                        <svg><use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/files/sprite.svg#icon--social-vk"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <?php }
+}
+
 if ( ! function_exists( 'hook_section_intro' ) ) {
     /**
      * Display Hooks Section Intro

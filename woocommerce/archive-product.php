@@ -28,7 +28,9 @@ get_header( 'shop' );
  */
 // do_action( 'woocommerce_before_main_content' );
 
-	// hook_section_catalog();
+	hook_page_before();
+	hook_start_menu();
+	hook_page_after();
 
 /**
  * Hook: woocommerce_after_main_content.

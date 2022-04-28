@@ -23,8 +23,8 @@ add_action( 'hook_header', 'hook_nav',                          20 );
 
 add_action( 'hook_home', 'hook_page_before',                    10 );
 // add_action( 'hook_home', 'hook_section_intro',                  20 );
-// add_action( 'hook_home', 'hook_section_event',                  20 );
-add_action( 'hook_home', 'hook_section_catalog',                  20 );
+// add_action( 'hook_home', 'hook_section_event',                  30 );
+add_action( 'hook_home', 'hook_start_menu',                     40 );
 add_action( 'hook_home', 'hook_page_after',                     80 );
 
 
