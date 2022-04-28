@@ -100,14 +100,20 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
     /**
      * Display Hooks Section catalog
      */
-    function hook_section_catalog() { ?>
+    function hook_section_catalog() { 
+        $queried_object = get_queried_object();
+        $term_id = $queried_object->term_id;
+        $term_name = $queried_object->name;    
+    ?>
     <section class="section section-catalog">
         <div id="menu" class="section-catalog__title">
-            Меню
+            <?php echo $term_name; ?>
         </div>
                 
-        <?php 
+        <?php
+
             $args = array(
+                'parent' => $term_id,
                 'order' => 'ASC',
                 'hide_empty' => false,
             );
