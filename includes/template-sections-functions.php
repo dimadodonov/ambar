@@ -43,6 +43,7 @@ if ( ! function_exists( 'hook_nav' ) ) {
                     </a>
                 </div>
             </div>
+            <div class="nav__dev"><a href="https://mitroliti.ru" target="_blank" title="Сайт разработан в компании - mitroliti">Разработано в <strong>mitroliti</strong></a></div>
         </div>
     <?php }
 }
@@ -74,6 +75,7 @@ if ( ! function_exists( 'hook_start_menu' ) ) {
                     </a>
                 </div>
             </div>
+            <div class="nav__dev"><a href="https://mitroliti.ru" target="_blank" title="Сайт разработан в компании - mitroliti">Сделано с помощью <strong>mitroliti</strong></a></div>
         </div>
     <?php }
 }

@@ -38,6 +38,20 @@
         }
     }
 
+    &__dev {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+
+        a {
+            color: rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                color: rgba(0, 0, 0, 1);
+            }
+        }
+    }
+
     &.action {
         display: block;
     }
