@@ -9,7 +9,7 @@ global $product;
 function woocommerce_custom_add_to_cart_class ( $html, $product, $args ) {
     $product_id = $product->get_id();
     // Define the classes to be added
-    $class = "btn btn-order btn-order-loop ajax_add_to_cart";
+    $class = "btn btn-order btn-order-loop add_to_cart_button ajax_add_to_cart";
     $class_added = "btn btn-order btn-order-loop added";
 
     if (

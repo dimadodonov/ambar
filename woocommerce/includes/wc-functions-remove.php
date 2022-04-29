@@ -17,17 +17,17 @@ add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 remove_filter( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 // Отключение уведомлений вукомерса
-add_filter( 'wc_add_to_cart_message', 'remove_add_to_cart_message' );
+add_filter( 'wc_add_to_cart_message_html', 'remove_add_to_cart_message' );
 
-// function remove_add_to_cart_message() {
-//     return;
-// }
+function remove_add_to_cart_message() {
+    return;
+}
 
-add_filter( 'wc_add_to_cart_message', 'empty_wc_add_to_cart_message', 10, 2 );
+add_filter( 'wc_add_to_cart_message_html', 'empty_wc_add_to_cart_message', 10, 2 );
 
-// function empty_wc_add_to_cart_message( $message, $product_id ) {
-//     return '';
-// };
+function empty_wc_add_to_cart_message( $message, $product_id ) {
+    return '';
+};
 
 
 // Отключаем отображение кол-во товара на странице
