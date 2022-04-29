@@ -68,6 +68,14 @@
         }
     }
 
+    &-name {
+        margin-bottom: 3px;
+
+        a {
+            color: #000;
+        }
+    }
+
     &-total {
         margin-top: 30px;
         font-family: $f-medium;
