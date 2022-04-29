@@ -27,7 +27,7 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
                         </a>
                     <?php else : ?>
                         <a class="cart-mini__price" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
-                            Заказ / <?php echo wp_kses_data(WC()->cart->get_cart_contents_count()); ?> ₽
+                            Заказ / <?php $ordertotal = wp_kses_data( WC()->cart->get_total() ); echo $ordertotal; ?>
                         </a>
                     <?php endif;
                 ?>

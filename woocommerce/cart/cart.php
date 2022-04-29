@@ -127,8 +127,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</div>
 			<?php } ?>
 
+			<button type="submit" class="cart-button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+
+			<?php do_action( 'woocommerce_cart_actions' ); ?>
+
+			<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
+
 			<div class="cart-total">
-				Итого: <ins>7 580</ins> ₽
+				Итого: <?php echo wp_kses_data( WC()->cart->get_total() ); ?>
 			</div>
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>

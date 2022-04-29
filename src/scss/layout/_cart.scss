@@ -46,6 +46,9 @@
         height: 24px;
 
         .remove {
+            width: 24px;
+            height: 24px;
+
             &::after,
             &::before {
                 content: '';
@@ -121,5 +124,10 @@
         &.active {
             display: block;
         }
+    }
+
+    &-button {
+        opacity: 0 !important;
+        display: none !important;
     }
 }

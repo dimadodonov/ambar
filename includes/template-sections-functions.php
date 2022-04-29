@@ -321,14 +321,13 @@ if ( ! function_exists( 'hook_mini_cart' ) ) {
                 </div>
             </div>
             
-        <?php else : ?>
+        <?php else : 
+            ?>
             <div class="cart-mini cart-customlocation">
                 <div class="cart-mini__totalprice">
-
                     <a class="cart-mini__price" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
-                        Заказ / <?php echo wp_kses_data(WC()->cart->get_cart_contents_count()); ?> ₽
+                        Заказ / <?php $ordertotal = wp_kses_data( WC()->cart->get_total() ); echo $ordertotal; ?>
                     </a>
-                    
                 </div>
             </div>
 
