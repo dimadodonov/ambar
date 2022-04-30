@@ -18,7 +18,7 @@
             &.stiky {
                 position: fixed;
                 top: 60px;
-                z-index: 10;
+                z-index: 20;
                 background-color: #fff;
             }
         }
@@ -51,17 +51,21 @@
             flex: 0 0 40px;
             width: 40px;
             height: 40px;
-            border-radius: 20px;
+            overflow: hidden;
+            border-radius: 10px;
             background-color: #ccc;
 
             img {
                 width: 100%;
-                height: auto;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
         }
 
         &__title {
             width: calc(100% - 40px);
+            margin-right: 15px;
             padding-left: 10px;
             color: #000;
             font-size: 14px;
@@ -106,6 +110,7 @@
         }
 
         &__photo {
+            position: relative;
             flex: 0 0 90px;
             width: 90px;
             height: 90px;
@@ -144,6 +149,59 @@
         }
 
         &__qty {
+        }
+
+        &__edit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            transform: translate(-50%, -50%);
+            border-radius: 24px;
+            background-color: gold;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                opacity: 0;
+                width: 36px;
+                height: 36px;
+                transform: translate(-50%, -50%);
+                transition: all 0.3s ease;
+                border-radius: 30px;
+                background-color: gold;
+            }
+
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    width: 60px;
+                    height: 60px;
+                }
+
+                span {
+                    width: 24px;
+                    height: 24px;
+                    background-size: 24px 24px;
+                }
+            }
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 15;
+                width: 16px;
+                height: 16px;
+                transform: translate(-50%, -50%);
+                transition: all 0.3s ease;
+                background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMTY5Ni4xNDNweCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTY5Ni4xNjIgMTY5Ni4xNDM7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNjk2LjE2MiAxNjk2LjE0MyIgd2lkdGg9IjE2OTYuMTYycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIGlkPSJwZW4iPjxwYXRoIGQ9Ik0xNjQ4LjAxNiwzMDUuMzY3TDEzOTAuNzk1LDQ4LjE0OUMxMzU5Ljc0NywxNy4wOTgsMTMxOC40NjYsMCwxMjc0LjU1NSwwYy00My45MDcsMC04NS4xODgsMTcuMDk4LTExNi4yMzYsNDguMTQ4ICAgTDgxLjU4NSwxMTI0Ljg2NmMtMTAuMjIsMTAuMjItMTYuODA4LDIzLjUxMS0xOC43NSwzNy44MzNMMC42MDEsMTYyMS4xODZjLTIuNzc0LDIwLjQ0OCw0LjE2MSw0MS4wMTUsMTguNzUzLDU1LjYwNSAgIGMxMi40NzMsMTIuNDczLDI5LjMxMywxOS4zNTIsNDYuNzE0LDE5LjM1MmMyLjk1MiwwLDUuOTIzLTAuMTk3LDguODkxLTAuNjAxbDQ1OC40ODgtNjIuMjMxICAgYzE0LjMyNC0xLjk0NSwyNy42MTUtOC41MjksMzcuODM1LTE4Ljc1MkwxNjQ4LjAxNiw1MzcuODQ0YzMxLjA0OS0zMS4wNDgsNDguMTQ2LTcyLjMzLDQ4LjE0Ni0xMTYuMjM3ICAgQzE2OTYuMTYyLDM3Ny42OTYsMTY3OS4wNjQsMzM2LjQxNSwxNjQ4LjAxNiwzMDUuMzY3eiBNNDkzLjU5OCwxNTA1LjM2NmwtMzUwLjM4MSw0Ny41NThsNDcuNTYtMzUwLjM3Nkw5NTMuNzgsNDM5LjU1NyAgIGwzMDIuODE4LDMwMi44MTlMNDkzLjU5OCwxNTA1LjM2NnogTTE1NTQuNTc1LDQ0NC40MDRsLTIwNC41MzYsMjA0LjUzM2wtMzAyLjgyMS0zMDIuODE4bDIwNC41MzUtMjA0LjUzMiAgIGM4LjIyLTguMjE4LDE3LjgxNC05LjQ0NiwyMi44MDItOS40NDZjNC45ODgsMCwxNC41ODIsMS4yMjgsMjIuODAzLDkuNDQ2bDI1Ny4yMjEsMjU3LjIxOGM4LjIxNyw4LjIxNyw5LjQ0MywxNy44MTIsOS40NDMsMjIuNzk5ICAgUzE1NjIuNzk1LDQzNi4xODYsMTU1NC41NzUsNDQ0LjQwNHoiLz48L2c+PGcgaWQ9IkxheWVyXzEiLz48L3N2Zz4=');
+                background-size: 16px 16px;
+            }
         }
     }
 } // .catalog

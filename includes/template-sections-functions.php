@@ -127,7 +127,7 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
     function hook_section_catalog() { 
         $queried_object = get_queried_object();
         $term_id = $queried_object->term_id;
-        $term_name = $queried_object->name;    
+        $term_name = $queried_object->name;
     ?>
     <section class="section section-catalog">
         <div id="menu" class="section-catalog__title">
@@ -206,7 +206,7 @@ if ( ! function_exists( 'catalogloop' ) ) {
             'product_cat' => $term,
             'post_status' => 'publish',
             'posts_per_page' => 99,                            
-            'order' => 'DECS',
+            'order' => 'ASC',
         );
 
         $news_query = new WP_Query( $args );

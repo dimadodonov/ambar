@@ -33,6 +33,9 @@ $post_id = get_the_ID();
 <div <?php wc_product_class('catalog-loop__item'); ?>>
 	<div class="catalog-loop__row">
 		<figure class="catalog-loop__photo">
+			<?php if( current_user_can( 'edit_posts' ) ) {
+				echo '<a href="' . get_edit_post_link() . '" class="catalog-loop__edit"><span></span></a>';
+			}; ?>
 			<?php echo $product->get_image(); ?>
 		</figure>
 		<div class="catalog-loop__inner">
