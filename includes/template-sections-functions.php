@@ -187,7 +187,7 @@ if ( ! function_exists( 'hook_section_catalog' ) ) {
                 </div>
 
                 <?php foreach ($terms as $cat_term) :
-                    catalogloop($cat_term->slug, $cat_term->name);
+                    catalogloop($cat_term->slug, $cat_term->name, $cat_term->description);
                 endforeach; ?>
 
             <?php } ?>
@@ -199,7 +199,7 @@ if ( ! function_exists( 'catalogloop' ) ) {
     /**
      * Display Hooks catalogloop
      */
-    function catalogloop($term, $name) {
+    function catalogloop($term, $name, $desc) {
 
         $args = array(
             'post_type' => 'product',
@@ -215,6 +215,7 @@ if ( ! function_exists( 'catalogloop' ) ) {
 
             <div id="<?php echo 'cat_' . $term; ?>" class="catalog-loop">
                 <div class="catalog-loop__title"><?php echo $name; ?></div>
+                <div class="catalog-loop__subtitle"><?php echo $desc; ?></div>
                 <div class="catalog-loop__wrap">
 
                     <?php while ($news_query->have_posts()) :

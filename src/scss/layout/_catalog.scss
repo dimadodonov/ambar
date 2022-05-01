@@ -78,7 +78,7 @@
         padding: 30px 20px 0;
 
         &__title {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             color: rgba(0, 0, 0, 0.2);
             font-family: $f-bold;
             font-size: 36px;
@@ -89,6 +89,19 @@
             @include xs-block() {
                 font-size: 24px;
                 line-height: normal;
+            }
+        }
+
+        &__subtitle {
+            margin-bottom: 30px;
+            color: rgba(0, 0, 0, 0.5);
+            font-family: $f-medium;
+            font-size: 18px;
+            line-height: normal;
+            text-align: center;
+
+            @include xs-block() {
+                font-size: 16px;
             }
         }
 

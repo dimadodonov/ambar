@@ -1,7 +1,27 @@
 import $ from 'jquery';
+import fancybox from '@fancyapps/fancybox';
 
 export default () => {
     (function ($) {
+        $('[data-fancybox]').fancybox({
+            clickOutside: 'close',
+            buttons: [
+                //"zoom",
+                //"share",
+                //"slideShow",
+                //"fullScreen",
+                //"download",
+                //"thumbs",
+                'close',
+            ],
+            protect: true, // РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РјРѕР¶РµС‚ СЃРѕС…СЂР°РЅРёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+            // toolbar  : false // СѓР±СЂР°Р»Рё РїР°РЅРµР»СЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ
+            mobile: {
+                clickContent: 'close',
+                clickSlide: 'close',
+            },
+        });
+
         var proQty = $('.pro-qty');
         proQty.append('<div class="inc qty-btn">+</div>');
         proQty.append('<div class= "dec qty-btn">-</div>');

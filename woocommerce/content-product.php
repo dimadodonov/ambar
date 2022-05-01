@@ -32,15 +32,22 @@ $post_id = get_the_ID();
 ?>
 <div <?php wc_product_class('catalog-loop__item'); ?>>
 	<div class="catalog-loop__row">
-		<figure class="catalog-loop__photo">
-			<?php if( current_user_can( 'edit_posts' ) ) {
-				echo '<a href="' . get_edit_post_link() . '" class="catalog-loop__edit"><span></span></a>';
-			}; ?>
-			<?php echo $product->get_image(); ?>
-		</figure>
+		<?php
+			$product_image_id = $product->get_image_id();
+			$product_image_url = wp_get_attachment_image_url($product_image_id, 'large');
+			$product_name = $product->get_name();
+			$price = $product->get_regular_price();
+		?>
+		<a data-fancybox="<?php echo $product->get_id(); ?>"  data-caption="<?php echo $product_name . ' - ' . $price . ' ₽'; ?>" href="<?php echo $product_image_url; ?>">
+			<figure class="catalog-loop__photo">
+				<?php if( current_user_can( 'edit_posts' ) ) {
+					echo '<a href="' . get_edit_post_link() . '" class="catalog-loop__edit"><span></span></a>';
+				}; ?>
+				<?php echo $product->get_image(); ?>
+			</figure>
+		</a>
 		<div class="catalog-loop__inner">
 			<?php
-				$product_name = $product->get_name();
 				if($product_name) :
 			?>
 				<div class="catalog-loop__name">
@@ -59,7 +66,6 @@ $post_id = get_the_ID();
 	</div>
 	<div class="catalog-loop__prices">
 		<?php 
-			$price = $product->get_regular_price();
 			if($price) : 
 		?>
 		<div class="catalog-loop__price"><?php echo number_format($price,0,"."," ") . ' ₽'; ?></div>
